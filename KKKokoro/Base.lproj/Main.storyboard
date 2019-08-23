@@ -41,7 +41,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="116" id="7TZ-Kr-Inl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ListTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="116" id="7TZ-Kr-Inl" customClass="ListTableViewCell" customModule="KKKokoro" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="442" width="414" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7TZ-Kr-Inl" id="bkv-io-CcH">
@@ -55,14 +55,46 @@
                                                         <constraint firstAttribute="width" constant="80" id="UZq-Uf-AKg"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDZ-iE-al2">
+                                                    <rect key="frame" x="120" y="47" width="234" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="APW-QC-1H0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx0-ra-opj">
+                                                    <rect key="frame" x="374" y="46" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Vx0-ra-opj" secondAttribute="height" multiplier="1:1" id="JwR-lu-mi2"/>
+                                                        <constraint firstAttribute="width" constant="20" id="MXz-3Q-NyJ"/>
+                                                        <constraint firstAttribute="height" constant="20" id="QcK-xA-vP7"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="icons8-heart-24">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <state key="selected" image="icons8-heart-24-selecteed"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Vx0-ra-opj" firstAttribute="centerY" secondItem="bkv-io-CcH" secondAttribute="centerY" id="7DM-Yp-FUl"/>
                                                 <constraint firstItem="vEJ-aa-dLD" firstAttribute="top" secondItem="bkv-io-CcH" secondAttribute="top" constant="10" id="FWa-qX-ea2"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vx0-ra-opj" secondAttribute="trailing" constant="20" id="Jmv-Iq-bIG"/>
                                                 <constraint firstItem="vEJ-aa-dLD" firstAttribute="leading" secondItem="bkv-io-CcH" secondAttribute="leading" constant="20" id="KkV-nE-Bpf"/>
+                                                <constraint firstItem="tDZ-iE-al2" firstAttribute="centerY" secondItem="bkv-io-CcH" secondAttribute="centerY" id="PPE-8B-8lh"/>
+                                                <constraint firstItem="Vx0-ra-opj" firstAttribute="leading" secondItem="tDZ-iE-al2" secondAttribute="trailing" constant="20" id="Pik-6g-6iC"/>
+                                                <constraint firstItem="tDZ-iE-al2" firstAttribute="leading" secondItem="vEJ-aa-dLD" secondAttribute="trailing" constant="20" id="eaX-Hk-VMs"/>
                                                 <constraint firstAttribute="bottom" secondItem="vEJ-aa-dLD" secondAttribute="bottom" constant="10" id="wCh-FI-duj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="albumImage" destination="vEJ-aa-dLD" id="zTg-cj-Xxl"/>
+                                            <outlet property="heartBtn" destination="Vx0-ra-opj" id="EXE-41-f2Q"/>
+                                            <outlet property="songTitle" destination="tDZ-iE-al2" id="wk5-l5-yhc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -86,4 +118,8 @@
             <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-heart-24" width="24" height="24"/>
+        <image name="icons8-heart-24-selecteed" width="24" height="24"/>
+    </resources>
 </document>

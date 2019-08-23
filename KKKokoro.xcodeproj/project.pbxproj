@@ -16,6 +16,7 @@
 		030CD5A6230F7F6E00DA90BA /* AccessTokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5A5230F7F6E00DA90BA /* AccessTokenData.swift */; };
 		030CD5A9230F8C5000DA90BA /* AccessTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5A8230F8C5000DA90BA /* AccessTokenManager.swift */; };
 		030CD5AB230F962B00DA90BA /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5AA230F962B00DA90BA /* ListManager.swift */; };
+		030CD5AE230FB7D500DA90BA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5AD230FB7D500DA90BA /* ListTableViewCell.swift */; };
 		2E79DBAF5F5E7EA4A37D7B2D /* Pods_KKKokoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7910EF71B2DC18606F15FA /* Pods_KKKokoro.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		030CD5A5230F7F6E00DA90BA /* AccessTokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenData.swift; sourceTree = "<group>"; };
 		030CD5A8230F8C5000DA90BA /* AccessTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenManager.swift; sourceTree = "<group>"; };
 		030CD5AA230F962B00DA90BA /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		030CD5AD230FB7D500DA90BA /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		0FF0130E7E89A1D1070A15FC /* Pods-KKKokoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKKokoro.debug.xcconfig"; path = "Target Support Files/Pods-KKKokoro/Pods-KKKokoro.debug.xcconfig"; sourceTree = "<group>"; };
 		3020CB7248A8CA5804AA7126 /* Pods-KKKokoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKKokoro.release.xcconfig"; path = "Target Support Files/Pods-KKKokoro/Pods-KKKokoro.release.xcconfig"; sourceTree = "<group>"; };
 		FD7910EF71B2DC18606F15FA /* Pods_KKKokoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKKokoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 		030CD5AC230F9F1100DA90BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				030CD5AD230FB7D500DA90BA /* ListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030CD5AE230FB7D500DA90BA /* ListTableViewCell.swift in Sources */,
 				030CD594230F775900DA90BA /* ViewController.swift in Sources */,
 				030CD5AB230F962B00DA90BA /* ListManager.swift in Sources */,
 				030CD5A6230F7F6E00DA90BA /* AccessTokenData.swift in Sources */,
