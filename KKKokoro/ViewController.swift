@@ -52,7 +52,8 @@ class ViewController: UIViewController {
             
             listTableView.reloadData()
                 
-            if hotList?.data.count ?? 0 == 20 && hotList?.paging.next != nil {
+            if hotlistData.count < hotList?.summary.total ?? 0 {
+                
                     paging += 1
                 
                     listManager.fetchList(paging: paging)
