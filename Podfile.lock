@@ -1,0 +1,20 @@
+PODS:
+  - KeychainAccess (3.2.0)
+  - Kingfisher (5.7.0)
+
+DEPENDENCIES:
+  - KeychainAccess
+  - Kingfisher (~> 5.7)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KeychainAccess
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+
+PODFILE CHECKSUM: 507dce764832e1873077f6205b8423a605624d6e
+
+COCOAPODS: 1.7.5

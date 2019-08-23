@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		030CD59C230F775A00DA90BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CD59A230F775A00DA90BA /* LaunchScreen.storyboard */; };
 		030CD5A4230F777300DA90BA /* HotListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5A3230F777300DA90BA /* HotListData.swift */; };
 		030CD5A6230F7F6E00DA90BA /* AccessTokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5A5230F7F6E00DA90BA /* AccessTokenData.swift */; };
+		030CD5A9230F8C5000DA90BA /* AccessTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5A8230F8C5000DA90BA /* AccessTokenManager.swift */; };
+		030CD5AB230F962B00DA90BA /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CD5AA230F962B00DA90BA /* ListManager.swift */; };
+		2E79DBAF5F5E7EA4A37D7B2D /* Pods_KKKokoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7910EF71B2DC18606F15FA /* Pods_KKKokoro.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,11 @@
 		030CD59D230F775A00DA90BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		030CD5A3230F777300DA90BA /* HotListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotListData.swift; sourceTree = "<group>"; };
 		030CD5A5230F7F6E00DA90BA /* AccessTokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenData.swift; sourceTree = "<group>"; };
+		030CD5A8230F8C5000DA90BA /* AccessTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenManager.swift; sourceTree = "<group>"; };
+		030CD5AA230F962B00DA90BA /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		0FF0130E7E89A1D1070A15FC /* Pods-KKKokoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKKokoro.debug.xcconfig"; path = "Target Support Files/Pods-KKKokoro/Pods-KKKokoro.debug.xcconfig"; sourceTree = "<group>"; };
+		3020CB7248A8CA5804AA7126 /* Pods-KKKokoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKKokoro.release.xcconfig"; path = "Target Support Files/Pods-KKKokoro/Pods-KKKokoro.release.xcconfig"; sourceTree = "<group>"; };
+		FD7910EF71B2DC18606F15FA /* Pods_KKKokoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKKokoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E79DBAF5F5E7EA4A37D7B2D /* Pods_KKKokoro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +53,8 @@
 			children = (
 				030CD590230F775900DA90BA /* KKKokoro */,
 				030CD58F230F775900DA90BA /* Products */,
+				C6B3F83581B81942A02EBC3F /* Pods */,
+				9D4AD57BEBF718A43F1CB2E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				030CD593230F775900DA90BA /* ViewController.swift */,
+				030CD5AC230F9F1100DA90BA /* View */,
 				030CD5A7230F7F7300DA90BA /* Model */,
 				030CD595230F775900DA90BA /* Main.storyboard */,
 				030CD591230F775900DA90BA /* AppDelegate.swift */,
@@ -74,8 +86,34 @@
 			children = (
 				030CD5A3230F777300DA90BA /* HotListData.swift */,
 				030CD5A5230F7F6E00DA90BA /* AccessTokenData.swift */,
+				030CD5A8230F8C5000DA90BA /* AccessTokenManager.swift */,
+				030CD5AA230F962B00DA90BA /* ListManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		030CD5AC230F9F1100DA90BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D4AD57BEBF718A43F1CB2E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD7910EF71B2DC18606F15FA /* Pods_KKKokoro.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6B3F83581B81942A02EBC3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FF0130E7E89A1D1070A15FC /* Pods-KKKokoro.debug.xcconfig */,
+				3020CB7248A8CA5804AA7126 /* Pods-KKKokoro.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 030CD5A0230F775A00DA90BA /* Build configuration list for PBXNativeTarget "KKKokoro" */;
 			buildPhases = (
+				A606992ECF557EBF6EDF68CF /* [CP] Check Pods Manifest.lock */,
 				030CD58A230F775900DA90BA /* Sources */,
 				030CD58B230F775900DA90BA /* Frameworks */,
 				030CD58C230F775900DA90BA /* Resources */,
+				33BDDC6335C8AA8E0E5DB35E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,13 +184,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		33BDDC6335C8AA8E0E5DB35E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KKKokoro/Pods-KKKokoro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KKKokoro/Pods-KKKokoro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KKKokoro/Pods-KKKokoro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A606992ECF557EBF6EDF68CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KKKokoro-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		030CD58A230F775900DA90BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				030CD594230F775900DA90BA /* ViewController.swift in Sources */,
+				030CD5AB230F962B00DA90BA /* ListManager.swift in Sources */,
 				030CD5A6230F7F6E00DA90BA /* AccessTokenData.swift in Sources */,
+				030CD5A9230F8C5000DA90BA /* AccessTokenManager.swift in Sources */,
 				030CD592230F775900DA90BA /* AppDelegate.swift in Sources */,
 				030CD5A4230F777300DA90BA /* HotListData.swift in Sources */,
 			);
@@ -296,6 +380,7 @@
 		};
 		030CD5A1230F775A00DA90BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FF0130E7E89A1D1070A15FC /* Pods-KKKokoro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,6 +398,7 @@
 		};
 		030CD5A2230F775A00DA90BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3020CB7248A8CA5804AA7126 /* Pods-KKKokoro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

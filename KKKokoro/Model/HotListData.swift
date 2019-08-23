@@ -10,7 +10,7 @@ import Foundation
 
 struct HitList: Codable {
     
-    let data: [String]
+    let data: [Data]
     
     let paging: Paging
     
@@ -72,7 +72,7 @@ struct Album: Codable {
     
     let images: [Image]
     
-    let artists: Artist
+    let artist: Artist
     
     enum CodingKeys: String, CodingKey {
         
@@ -90,7 +90,7 @@ struct Album: Codable {
         
         case images
         
-        case artists
+        case artist
         
     }
     
