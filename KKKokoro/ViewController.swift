@@ -11,6 +11,7 @@ import Kingfisher
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var topBackView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +20,8 @@ class ViewController: UIViewController {
         
         // 設定上方圖片
         topImage.kf.setImage(with: topViewURL)
+        topBackView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width)
+        cachedImageViewSize = topBackView.frame
         
         // POST API
         AccessTokenManger.shared.httpPostRequest()
@@ -29,13 +32,17 @@ class ViewController: UIViewController {
         
     }
     
-    let listManager = ListManager()
-    var paging: Int = 0
-    
     @IBOutlet weak var topImage: UIImageView!
+    
     let topViewURL = URL(string: "https://i.kfs.io/playlist/global/26541395v266/cropresize/600x600.jpg")
     
+    var cachedImageViewSize: CGRect?
+    
     @IBOutlet weak var listTableView: UITableView!
+    
+    let listManager = ListManager()
+    
+    var paging: Int = 0
     
     var hotList: HitList?
     
@@ -44,9 +51,13 @@ class ViewController: UIViewController {
         didSet {
             
             listTableView.reloadData()
-
+                
+            if hotList?.data.count ?? 0 == 20 && hotList?.paging.next != nil {
+                    paging += 1
+                
+                    listManager.fetchList(paging: paging)
+                }
         }
-        
     }
     
     var selected: [Bool] = {
@@ -58,15 +69,20 @@ class ViewController: UIViewController {
         }
         
         return array
-        }() 
+        }()
 }
 
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return hotlistData.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,6 +114,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         selected[sender.tag] = sender.isSelected
         
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let y: CGFloat = -scrollView.contentOffset.y
+        
+        if y > 0 {
+                
+                guard let cachedImageViewSize = self.cachedImageViewSize else {return}
+            
+                self.topImage.frame = CGRect(
+                    x: 0,
+                    y: scrollView.contentOffset.y,
+                    width: cachedImageViewSize.size.width + y,
+                    height: cachedImageViewSize.size.height + y)
+            
+                self.topImage.center = CGPoint(x: self.view.center.x, y: self.topImage.center.y)
+            
+        }
+    }
 }
 
 extension ViewController: ListManagerDelegate {
@@ -111,21 +146,6 @@ extension ViewController: ListManagerDelegate {
             self.hotlistData.append(contentsOf: listsData.data)
         
         }
-       
-//        print("VC拿到： \(hotList)")
-//        print("=======data: \(hotlistData)")
-        
-        if listsData.paging.next != nil {
-            
-            paging += 1
-            
-            listManager.fetchList(paging: paging)
-            
-        }
-        
-//        print(hotlistData.last)
-//        print("===\(hotlistData.count)===")
-//        print(hotlistData.last)
         
     }
     

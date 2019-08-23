@@ -21,7 +21,6 @@ class ListManager {
             
         var listRequest = URLRequest(url: url)
         
-        
         // Header
         guard let accestoken = AccessTokenManger.shared.keychain["accessToken"] else {return}
         listRequest.allHTTPHeaderFields = ["Authorization": "\(accestoken)"]
