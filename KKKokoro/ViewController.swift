@@ -56,7 +56,7 @@ class ViewController: UIViewController {
                     paging += 1
                 
                     listManager.fetchList(paging: paging)
-                }
+            }
         }
     }
     
@@ -80,11 +80,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollVi
         return hotlistData.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        return UITableView.automaticDimension
+        if indexPath.row <= 4 {
+            
+            cell.alpha = 1
+            
+        } else {
+            
+            cell.alpha = 0
+            
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0.03 * Double(indexPath.row),
+                animations: {
+                    cell.alpha = 1
+            })
+        }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath)
