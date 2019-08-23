@@ -92,12 +92,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollVi
             
             UIView.animate(
                 withDuration: 0.5,
-                delay: 0.03 * Double(indexPath.row),
+                delay: 0.03 ,
                 animations: {
                     cell.alpha = 1
             })
         }
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath)
@@ -131,19 +132,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollVi
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let y: CGFloat = -scrollView.contentOffset.y
-        
+
         if y > 0 {
-                
-                guard let cachedImageViewSize = self.cachedImageViewSize else {return}
-            
-                self.topImage.frame = CGRect(
+
+            guard let cachedImageViewSize = self.cachedImageViewSize else {return}
+
+            self.topImage.frame = CGRect(
                     x: 0,
                     y: scrollView.contentOffset.y,
                     width: cachedImageViewSize.size.width + y,
                     height: cachedImageViewSize.size.height + y)
-            
-                self.topImage.center = CGPoint(x: self.view.center.x, y: self.topImage.center.y)
-            
+
+            self.topImage.center = CGPoint(x: self.view.center.x, y: self.topImage.center.y)
         }
     }
 }
