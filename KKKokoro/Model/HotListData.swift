@@ -124,7 +124,7 @@ struct Paging: Codable {
     
 //    let previous:
     
-    let next: String
+    let next: String?
     
 }
 

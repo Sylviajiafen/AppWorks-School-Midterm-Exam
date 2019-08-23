@@ -21,11 +21,13 @@ class ViewController: UIViewController {
         AccessTokenManger.shared.httpPostRequest()
         
         // GET API
-        let listManager = ListManager()
-        listManager.fetchList()
+        listManager.fetchList(paging: paging)
         listManager.delegate = self
         
     }
+    
+    let listManager = ListManager()
+    var paging: Int = 0
     
     @IBOutlet weak var topImage: UIImageView!
     let topViewURL = URL(string: "https://i.kfs.io/playlist/global/26541395v266/cropresize/600x600.jpg")
@@ -33,15 +35,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     
     var hotList: HitList?
+    
+    var hotlistData: [Data] = []
 }
 
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let hotList = hotList else { return 1 }
-        
-        return hotList.data.count
+        return hotlistData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +58,20 @@ extension ViewController: ListManagerDelegate {
         
         hotList = listsData
         
+        hotlistData.append(contentsOf: listsData.data)
+        
         print("VC拿到： \(hotList)")
+        print("=======data: \(hotlistData)")
+        
+        if listsData.paging.next != nil {
+            
+            paging += 1
+            
+            listManager.fetchList(paging: paging)
+            
+            hotlistData.append(contentsOf: listsData.data)
+            
+        }
         
     }
     

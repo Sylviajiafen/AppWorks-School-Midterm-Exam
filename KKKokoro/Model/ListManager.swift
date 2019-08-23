@@ -12,14 +12,15 @@ class ListManager {
     
     weak var delegate: ListManagerDelegate?
     
-    func fetchList() {
+    func fetchList(paging: Int) {
         
         // URL
-        let listURL = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/DZrC8m29ciOFY2JAm3/tracks?territory=TW&limit=20")
-        
+        var listURL = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/DZrC8m29ciOFY2JAm3/tracks?limit=20&offset=\(paging * 20)&territory=TW")
+            
         guard let url = listURL else {return}
-        
+            
         var listRequest = URLRequest(url: url)
+        
         
         // Header
         guard let accestoken = AccessTokenManger.shared.keychain["accessToken"] else {return}
