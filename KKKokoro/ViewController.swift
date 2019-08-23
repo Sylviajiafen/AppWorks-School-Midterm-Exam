@@ -92,7 +92,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollVi
             
             UIView.animate(
                 withDuration: 0.5,
-                delay: 0.03 ,
+                delay: 0.03,
                 animations: {
                     cell.alpha = 1
             })
