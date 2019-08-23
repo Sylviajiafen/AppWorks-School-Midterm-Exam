@@ -38,8 +38,9 @@ class ListManager {
             print("status: \(response.statusCode)")
             
             do { let listData = try decoder.decode(HitList.self, from: data)
-                
+                    
                 self.delegate?.manager(self, didGet: listData)
+                
                 
             } catch {
                 

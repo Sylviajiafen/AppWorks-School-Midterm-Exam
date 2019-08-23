@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        listTableView.delegate = self
+        listTableView.dataSource = self
+        
         // 設定上方圖片
         topImage.kf.setImage(with: topViewURL)
         
@@ -36,11 +39,37 @@ class ViewController: UIViewController {
     
     var hotList: HitList?
     
-    var hotlistData: [Data] = []
+    var hotlistData: [Data] = [] {
+        
+        didSet {
+            
+            listTableView.reloadData()
+
+        }
+        
+    }
+    
+    var selected: [Bool] = {
+        
+        var array: [Bool] = []
+        
+        for times in 0...60 {
+            array.append(false)
+        }
+        
+        return array
+        }() {
+            
+        didSet {
+            
+            print(selected)
+        }
+    }
 }
 
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return hotlistData.count
@@ -48,7 +77,46 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath)
+        
+        guard let listCell = cell as? ListTableViewCell else { return UITableViewCell() }
+        
+        let imageUrl = URL(string: hotlistData[indexPath.row].album.images[0].url)
+        
+        listCell.albumImage.kf.setImage(with: imageUrl)
+        
+        listCell.songTitle.text = hotlistData[indexPath.row].name
+        
+        listCell.heartBtn.tag = indexPath.row
+        
+        listCell.heartBtn.addTarget(self, action: #selector(btnSelected(sender:)), for: .touchUpInside)
+        
+        listCell.heartBtn.isSelected = selected[indexPath.row]
+
+        
+        return listCell
+        
+    }
+    
+    @objc func btnSelected(sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        
+        selected[sender.tag] = sender.isSelected
+        
+        print(sender.tag)
+        print("btn is Select or not: \(sender.isSelected)")
+        print("in array: \(selected[sender.tag])")
+        
+//        switch sender.isSelected {
+//
+//        case true:
+//            sender.setImage(UIImage(named: "icons8-heart-24-selecteed"), for: .normal)
+//
+//        case false:
+//            sender.setImage(UIImage(named: "icons8-heart-24"), for: .normal)
+//
+//        }
     }
 }
 
@@ -58,10 +126,14 @@ extension ViewController: ListManagerDelegate {
         
         hotList = listsData
         
-        hotlistData.append(contentsOf: listsData.data)
+        DispatchQueue.main.async {
+            
+            self.hotlistData.append(contentsOf: listsData.data)
         
-        print("VC拿到： \(hotList)")
-        print("=======data: \(hotlistData)")
+        }
+       
+//        print("VC拿到： \(hotList)")
+//        print("=======data: \(hotlistData)")
         
         if listsData.paging.next != nil {
             
@@ -69,16 +141,16 @@ extension ViewController: ListManagerDelegate {
             
             listManager.fetchList(paging: paging)
             
-            hotlistData.append(contentsOf: listsData.data)
-            
         }
+        
+//        print(hotlistData.last)
+//        print("===\(hotlistData.count)===")
+//        print(hotlistData.last)
         
     }
     
     func manager(_ manager: ListManager, didFailWith error: Error) {
         
     }
-    
-    
     
 }
