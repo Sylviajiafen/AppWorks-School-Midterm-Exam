@@ -15,7 +15,7 @@ class ListManager {
     func fetchList(paging: Int) {
         
         // URL
-        var listURL = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/DZrC8m29ciOFY2JAm3/tracks?limit=20&offset=\(paging * 20)&territory=TW")
+        let listURL = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/DZrC8m29ciOFY2JAm3/tracks?limit=20&offset=\(paging * 20)&territory=TW")
             
         guard let url = listURL else {return}
             

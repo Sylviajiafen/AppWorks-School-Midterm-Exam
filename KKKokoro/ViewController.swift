@@ -58,13 +58,7 @@ class ViewController: UIViewController {
         }
         
         return array
-        }() {
-            
-        didSet {
-            
-            print(selected)
-        }
-    }
+        }() 
 }
 
 
@@ -93,7 +87,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         listCell.heartBtn.isSelected = selected[indexPath.row]
 
-        
         return listCell
         
     }
@@ -104,19 +97,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         selected[sender.tag] = sender.isSelected
         
-        print(sender.tag)
-        print("btn is Select or not: \(sender.isSelected)")
-        print("in array: \(selected[sender.tag])")
-        
-//        switch sender.isSelected {
-//
-//        case true:
-//            sender.setImage(UIImage(named: "icons8-heart-24-selecteed"), for: .normal)
-//
-//        case false:
-//            sender.setImage(UIImage(named: "icons8-heart-24"), for: .normal)
-//
-//        }
     }
 }
 
